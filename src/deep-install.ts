@@ -2,7 +2,9 @@ import { readdirSync, statSync } from 'fs';
 import { join } from 'path';
 import childproc from 'child_process';
 
-export default function deepInstall(options: deepInstallParameters) {
+async function deepInstall(options: deepInstallParameters) {
+    options = options || {};
+
     let folders: string[] = [];
 
     const getDirs = (p: string) => readdirSync(p).filter((f: any) => statSync(join(p, f)).isDirectory()).filter((dir: string) => ['node_modules', ...options.exclude].indexOf(dir) === -1)
@@ -36,3 +38,5 @@ export type deepInstallParameters = {
     skipRootFolder?: boolean,
     rootFolder?: string
 }
+
+module.exports = deepInstall;

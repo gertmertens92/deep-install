@@ -1,4 +1,5 @@
-import deepInstall, { deepInstallParameters } from 'deep-install';
+import { deepInstallParameters } from 'deep-install';
+var deepInstall = require('deep-install');
 
 let options: deepInstallParameters = { exclude: [""] };
 
