@@ -16,17 +16,23 @@ export default function deepInstall(options: deepInstallParameters) {
         getDirs(path).map((p: any) => `${path}/${p}`).forEach((p: string | undefined) => retrieveFolders(p, false));
     };
 
-    retrieveFolders();
+    retrieveFolders(options.rootFolder, options.skipRootFolder);
 
-    console.log('\n', "Found package.json in the following folders:", '\n', folders, '\n');
+    if (folders.length > 0) {
+        console.log('\n', "Found package.json in the following folders:", '\n', folders, '\n');
 
-    folders.forEach(folder => {
-        console.log('\n', `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`, '\n', `Executing npm i in folder ${folder}`, '\n', `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`, '\n');
+        folders.forEach(folder => {
+            console.log('\n', `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`, '\n', `Executing npm install in folder ${folder}`, '\n', `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`, '\n');
 
-        childproc.execSync(`npm i`, { cwd: folder, stdio: 'inherit' });
-    });
+            childproc.execSync(`npm install`, { cwd: folder, stdio: 'inherit' });
+        });
+    } else {
+        console.error('\n', "No package.json found.", '\n');
+    }
 }
 
 export type deepInstallParameters = {
-    exclude: string[]
+    exclude: string[],
+    skipRootFolder?: boolean,
+    rootFolder?: string
 }
