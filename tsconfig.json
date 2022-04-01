@@ -97,7 +97,7 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "exclude": ["./test/**/*", "./dist/**/*"],
+  "exclude": ["./dist/**/*"],
   "typedocOptions": {
     "mode": "modules",
     "out": "docs"
