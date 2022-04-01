@@ -1,7 +1,7 @@
 {
   "name": "deep-install",
-  "version": "0.1.0",
-  "description": "Searches for package.json deep within the project and executes npm install",
+  "version": "1.0.0",
+  "description": "Searches for package.json deep within the project and runs install",
   "main": "dist/index.js",
   "bin": "dist/index.js",
   "scripts": {

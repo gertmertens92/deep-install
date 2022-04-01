@@ -1,6 +1,6 @@
 # deep-install
 A library that will traverse your project, search for package.json files and executes the install method of your choice.
-Standard npm install will be used unless instructed otherwise by available parameters. 
+Standard npm install will be used unless instructed otherwise by available options. 
 
 ## Installation
 using npm globally:
@@ -18,7 +18,7 @@ $ deep-install
 
 ## Available options
 ```bash
-# npm install --force
+# npm install -force
 $ deep-install --force
 
 # npm audit fix
